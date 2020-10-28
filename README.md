@@ -8,6 +8,6 @@ Also included in the site will be an online marketplace where users can buy and 
 
 Some stretch goals for this site will be to include some fun features like a gallon calculator where users can post the dimensions of their tank and find out how many gallons of water the tank contains. Also, a compatibility function where users can input multiple species of livestock and see if they are compatible with each other.
 
-![Home Page Wireframe](./static/images/ForumHomePage.jpg)
-![Home Page With Modal Wireframe](./static/images/ForumHomePageWithModal.jpg)
-![Post Index Wireframe](./static/images/ForumPostIndexPage.jpg)
+![Home Page Wireframe](main_app/static/images/ForumHomePage.jpg)
+![Home Page With Modal Wireframe](main_app/static/images/ForumHomePageWithModal.jpg)
+![Post Index Wireframe](main_app/static/images/ForumPostIndexPage.jpg)
