@@ -25,5 +25,7 @@ There will be several posting topics in which the user can navigate through to e
 Milestones:
 
 10/31/20 - Working site navigation and database manipulation (MVP) in Django
+
 11/3/20 - Complete Site Bootstrap Styling
+
 11/5/20 - Extra features (tank volume calculator, fish compatibility feature) stretch goals
