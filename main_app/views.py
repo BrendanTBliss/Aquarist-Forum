@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 def home(request):
-  return HttpResponse('<h1>Hello /ᐠ｡‸｡ᐟ\ﾉ</h1>')
+    return render(request, 'home.html')
 
 def freshwater(request):
   return HttpResponse('<h1>Freshwater</h1>')
