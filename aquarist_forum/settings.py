@@ -120,4 +120,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'aqua.agora.fishkeepers.forum@gmail.com'
+EMAIL_HOST_PASSWORD = 'scfbjtgiffrrwwnl' #past the key or password app here
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Aqua Agora The Fishkeepers Forum'
