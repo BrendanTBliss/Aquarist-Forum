@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm
 from django.contrib.sites.shortcuts import get_current_site
@@ -19,7 +19,6 @@ def home(request):
 
 def activation_sent(request):
     return render(request, 'activation_sent.html')
-
 
 def activate(request, uidb64, token):
     try:
@@ -66,5 +65,12 @@ def register(request):
         form = SignUpForm()
     return render(request, 'register.html', {'form': form})
 
+def profile(request):
+    return HttpResponse('<h1>profilepage</h1>')
+    
 def freshwater(request):
-  return HttpResponse('<h1>Freshwater</h1>')
+    return HttpResponse('<h1>Freshwater</h1>')
+
+
+
+
