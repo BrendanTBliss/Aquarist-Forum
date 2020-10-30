@@ -16,3 +16,16 @@ def update_profile_signal(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     instance.profile.save()
+
+class Post(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField(max_length=600)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post_date = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+            # return f"Posted: {self.post_date} - Post Title: {self.title} - Author: {self.user.first_name}, posted an article about {self.city.name}."
+            return f"{self.title}"    
+    class Meta:
+        ordering = ['-post_date']

@@ -10,4 +10,5 @@ urlpatterns = [
     path('aqua_agora/login/', views.login, name="login"),
     path('aqua_agora/profile', views.profile, name="profile"),
     path('aqua_agora/freshwater', views.freshwater, name='freshwater'),
+    
 ]

@@ -66,7 +66,7 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 def profile(request):
-    return HttpResponse('<h1>profilepage</h1>')
+    return render(request, 'profile.html')
     
 def freshwater(request):
     return HttpResponse('<h1>Freshwater</h1>')
