@@ -12,8 +12,8 @@ class UserAdmin(BaseUserAdmin):
     inlines = (ProfileInline,)
 
 # Register your models here.
-admin.site.register(Post)
 admin.site.register(Topic)
+admin.site.register(Post)
 admin.site.register(Profile)
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)

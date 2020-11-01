@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-from .models import Topic, Post, Profile
+from .models import Post, Profile
 from .forms import Post_Form, Profile_Form, User_Form, SignUpForm, Profile_User_Form
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -82,16 +82,6 @@ def topics_index(request):
     post = Post.objects.all()
     context = {'topics': topics, 'post': post, 'profile': profile}
     return render(request, 'topics/index.html', context)
-
-# --- Topic Detail ---
-def topics_detail(request, topic_id):
-    topics = Topic.objects.all()
-    topic = Topic.objects.get(id=topic_id)
-    posts = Post.objects.filter(topic_id=topic.id)
-    post = Post.objects.all()
-    post_form = Post_Form()
-    context = {'login': AuthenticationForm(), 'post': post, 'signup': UserCreationForm(), 'topic': topic, 'topics': topics, 'post_form': post_form, 'posts': posts.order_by("created_at")}
-    return render(request, 'topics/detail.html', context)
 
         
 # --- Profile Detail ---

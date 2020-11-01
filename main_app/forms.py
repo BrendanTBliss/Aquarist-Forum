@@ -36,7 +36,7 @@ class Post_Form(ModelForm):
     class Meta:
         model = Post
         fields = [
-            'title', 'content', 'topic', 'user', 'post_date' 
+            'title', 'content', 'user', 'topic', 'post_date' 
         ]
         widgets = {
             'title': forms.TextInput(
@@ -54,22 +54,17 @@ class Post_Form(ModelForm):
                     'class': 'form-control'
                     }
                 ),
-            'topic': forms.TextInput(
-                attrs={
-                    'class': 'form-control'
-                }
-            ),
             'user': forms.Select(
                 attrs={
                     'class': 'form-control'
-                }
-            )
+                    }
+                ),
+            'topic': forms.Select(
+                attrs={
+                    'class': 'form-control'
+                    }
+                )
         }
-
-class Topic_Form(ModelForm):
-    class Meta:
-        model = Topic
-        fields = ['name']
 
 class Profile_User_Form(ModelForm):
     class Meta:
