@@ -20,13 +20,44 @@
             {% for post in posts  %}
             <li class="nav-item text-white">
               <a class="nav-link" href="/posts/{{ post.id }}">{{ post.title }}</a>
-              <small class="ml-3 text-muted">Author: {{ user.username }}</small>
+              <small class="ml-3 text-muted">Author: {{ post.user.username }}</small>
               <small class="ml-3 text-muted">Date: {{ post.post_date }}</small>
               <p class="ml-3">{{ post.content }}</p>
             </li>
             {% endfor %}
           </ul>
       </div>
+      <div class="col">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger rounded-circle grow" data-toggle="modal" data-target="#staticBackdrop">
+            +
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Add a Post</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                <form class="mx-3" action="{% url 'posts_index' %}" method="POST">
+                <div class="form-group">
+                    {% csrf_token %} {{ post_form.as_p }}
+                    
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-danger">Submit Post</button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
 </div>
 {% endblock %}

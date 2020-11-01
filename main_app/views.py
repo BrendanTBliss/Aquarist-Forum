@@ -83,7 +83,7 @@ def topics_index(request):
     context = {'topics': topics, 'post': post, 'profile': profile}
     return render(request, 'topics/index.html', context)
 
-# --- City Detail ---
+# --- Topic Detail ---
 def topics_detail(request, topic_id):
     topics = Topic.objects.all()
     topic = Topic.objects.get(id=topic_id)
