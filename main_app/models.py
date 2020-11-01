@@ -32,3 +32,12 @@ class Post(models.Model):
             return f"{self.title}"    
     class Meta:
         ordering = ['post_date']
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=75)
+    image = models.CharField(max_length=200)
+    country = models.CharField(max_length=75)
+
+    def __str__(self):
+            return self.name

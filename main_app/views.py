@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-from .models import Post, Profile
+from .models import Post, Profile, Category
 from .forms import Post_Form, Profile_Form, User_Form, SignUpForm, Profile_User_Form
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -172,3 +172,22 @@ def profile_edit(request, user_id):
             profile_user_form = Profile_User_Form(instance=user)
             context = {'user': user, 'user_form': user_form, 'profile_form': profile_form, 'profile_user_form': profile_user_form}
             return render(request, 'profile/edit.html', context)
+
+
+# --- Category Index ---
+def categories_index(request):
+    profile = Profile.objects.all()
+    categories = Category.objects.all()
+    post = Post.objects.all()
+    context = {'categories': categories, 'posts': post, 'profile': profile}
+    return render(request, 'categories/index.html', context)
+
+# --- Category Detail ---
+def categories_detail(request, category_id):
+    categories = Category.objects.all()
+    category = Category.objects.get(id=category_id)
+    posts = Post.objects.filter(category_id=category.id)
+    post = Post.objects.all()
+    post_form = Post_Form()
+    context = {'login': AuthenticationForm(), 'post': post, 'signup': UserCreationForm(), 'category': category, 'categories': categories, 'post_form': post_form, 'posts': posts.order_by("created_at")}
+    return render(request, 'categories/detail.html', context)

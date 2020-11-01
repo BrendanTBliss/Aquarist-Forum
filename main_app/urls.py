@@ -15,4 +15,6 @@ urlpatterns = [
     path('register/', views.signup, name='signup'),
     path('sent/', activation_sent_view, name="activation_sent"),
     path('activate/<slug:uidb64>/<slug:token>/', activate, name='activate'),
+    path('categories/', views.categories_index, name="categories_index"),
+    path('categories/<int:category_id>/', views.categories_detail, name='categories_detail'),
 ]
