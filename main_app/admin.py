@@ -16,3 +16,4 @@ admin.site.register(Post)
 admin.site.register(Profile)
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+

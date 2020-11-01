@@ -1,14 +1,18 @@
-from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.conf.urls import url
 from . import views
+from .views import home, signup, activation_sent_view, activate
 
 urlpatterns = [
-    path('aqua_agora/', views.home, name='home'),
-    path('aqua_agora/signup/', views.register, name='register'),
-    path('aqua_agora/sent/', views.activation_sent, name="activation_sent"),
-    path('aqua_agora/activate/<slug:uidb64>/<slug:token>/', views.activate, name='activate'),
-    path('aqua_agora/login/', views.login, name="login"),
-    path('aqua_agora/profile', views.profile, name="profile"),
-    path('aqua_agora/freshwater', views.freshwater, name='freshwater'),
-    
+    path('', views.home, name='home'),
+    path('profile/', views.profile_detail, name='profile'),
+    path('profile/<int:user_id>/edit/', views.profile_edit, name='profile_edit'),
+    path('profile/<int:user_id>/delete/', views.profile_delete, name='profile_delete'),
+    path('posts/', views.posts_index, name='posts_index'),
+    path('posts/<int:post_id>/', views.posts_detail, name='posts_detail'),
+    path('posts/<int:post_id>/edit/', views.post_edit, name='post_edit'),
+    path('posts/<int:post_id>/delete/', views.post_delete, name='post_delete'),
+    path('register/', views.signup, name='signup'),
+    path('sent/', activation_sent_view, name="activation_sent"),
+    path('activate/<slug:uidb64>/<slug:token>/', activate, name='activate'),
 ]

@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+# # Create your models here.
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.EmailField(max_length=150)
@@ -16,10 +18,11 @@ def update_profile_signal(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     instance.profile.save()
-
+    
 class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField(max_length=600)
+    image = models.CharField(max_length=300)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
