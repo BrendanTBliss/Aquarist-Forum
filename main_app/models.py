@@ -28,7 +28,6 @@ def update_profile_signal(sender, instance, created, **kwargs):
 class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField(max_length=600)
-    image = models.CharField(max_length=300)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post_date = models.DateField()
