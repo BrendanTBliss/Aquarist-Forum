@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 
-from .models import Profile, Post, Category
+from .models import Profile, Post, Topic
 
     
 class SignUpForm(UserCreationForm):
@@ -36,7 +36,7 @@ class Post_Form(ModelForm):
     class Meta:
         model = Post
         fields = [
-            'title', 'content', 'image', 'user', 'post_date' 
+            'title', 'content', 'image', 'topic', 'user', 'post_date' 
         ]
         widgets = {
             'title': forms.TextInput(
@@ -59,6 +59,11 @@ class Post_Form(ModelForm):
                     'class': 'form-control'
                 }
             ),
+            'topic': forms.TextInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
             'user': forms.Select(
                 attrs={
                     'class': 'form-control'
@@ -66,6 +71,10 @@ class Post_Form(ModelForm):
             )
         }
 
+class Topic_Form(ModelForm):
+    class Meta:
+        model = Topic
+        fields = ['name']
 
 class Profile_User_Form(ModelForm):
     class Meta:
@@ -73,7 +82,3 @@ class Profile_User_Form(ModelForm):
         fields = ['username']
 
 
-class Category_Form(ModelForm):
-    class Meta:
-        model = Category
-        fields = ['name']

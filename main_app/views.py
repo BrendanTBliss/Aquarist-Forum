@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-from .models import Post, Profile, Category
+from .models import Post, Profile, Topic
 from .forms import Post_Form, Profile_Form, User_Form, SignUpForm, Profile_User_Form
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -75,6 +75,23 @@ def post_delete(request, post_id):
     Post.objects.get(id=post_id).delete()
     return redirect("posts_index")
 
+# --- Topic Index ---
+def topics_index(request):
+    profile = Profile.objects.all()
+    topics = Topic.objects.all()
+    post = Post.objects.all()
+    context = {'topics': topics, 'posts': post, 'profile': profile}
+    return render(request, 'topics/index.html', context)
+
+# --- Category Detail ---
+def topics_detail(request, topic_id):
+    topics = Topic.objects.all()
+    topic = Topic.objects.get(id=topic_id)
+    posts = Post.objects.filter(topic_id=topic.id)
+    post = Post.objects.all()
+    post_form = Post_Form()
+    context = {'login': AuthenticationForm(), 'post': post, 'signup': UserCreationForm(), 'topic': topic, 'topics': topics, 'post_form': post_form, 'posts': posts.order_by("created_at")}
+    return render(request, 'topics/detail.html', context)
 
         
 # --- Profile Detail ---
@@ -174,20 +191,3 @@ def profile_edit(request, user_id):
             return render(request, 'profile/edit.html', context)
 
 
-# --- Category Index ---
-def categories_index(request):
-    profile = Profile.objects.all()
-    categories = Category.objects.all()
-    post = Post.objects.all()
-    context = {'categories': categories, 'posts': post, 'profile': profile}
-    return render(request, 'categories/index.html', context)
-
-# --- Category Detail ---
-def categories_detail(request, category_id):
-    categories = Category.objects.all()
-    category = Category.objects.get(id=category_id)
-    posts = Post.objects.filter(category_id=category.id)
-    post = Post.objects.all()
-    post_form = Post_Form()
-    context = {'login': AuthenticationForm(), 'post': post, 'signup': UserCreationForm(), 'category': category, 'categories': categories, 'post_form': post_form, 'posts': posts.order_by("created_at")}
-    return render(request, 'categories/detail.html', context)

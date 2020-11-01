@@ -5,6 +5,12 @@ from django.dispatch import receiver
 
 # # Create your models here.
 
+class Topic(models.Model):
+    name = models.CharField(max_length=75)
+
+    def __str__(self):
+            return self.name
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.EmailField(max_length=150)
@@ -23,6 +29,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField(max_length=600)
     image = models.CharField(max_length=300)
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -34,10 +41,4 @@ class Post(models.Model):
         ordering = ['post_date']
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=75)
-    image = models.CharField(max_length=200)
-    country = models.CharField(max_length=75)
 
-    def __str__(self):
-            return self.name
