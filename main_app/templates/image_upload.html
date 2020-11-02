@@ -1,3 +1,5 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<body>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
      {{ form.as_p }}
@@ -8,4 +10,6 @@
     <h3>Succesfully uploaded : {{img_obj.title}}</h3>
     <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">
   {% endif %}
-  <a href="/tank_images/" class="button"><button class="pixel">Go to tank images</button></a>
+  <a href="/tank_images/" class="button"><button class="pixel">Go back to tank images</button></a>
+</body>
+{% endblock %}

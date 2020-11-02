@@ -20,7 +20,7 @@
             <li class="nav-item grow" id="pillitem">
                 <div onclick="location.href='{{ topic.id }}';" class='row' id="citypill">
                 <a class="nav-link" href="/posts/{{ post.id }}">{{ post.title }}</a>
-                <small class="ml-3 text-muted">Author: {{ user.username }}</small>
+                <small class="ml-3 text-muted">Author: {{ post.user.username }}</small>
               <p class="ml-3">{{ post.content }}</p>
             </li>
             {% endfor %}
