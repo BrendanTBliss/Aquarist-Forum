@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'aquarist_forum.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'aquaagora6',
+        'NAME': 'aquaagora7',
     }
 }
 
