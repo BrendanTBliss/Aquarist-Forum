@@ -36,7 +36,7 @@ class Post_Form(ModelForm):
     class Meta:
         model = Post
         fields = [
-            'title', 'content', 'user', 'topic', 'post_date' 
+            'title', 'content', 'user', 'topic' 
         ]
         widgets = {
             'title': forms.TextInput(
@@ -45,11 +45,6 @@ class Post_Form(ModelForm):
                     }
                 ),
             'content': forms.Textarea(
-                attrs={
-                    'class': 'form-control'
-                    }
-                ),
-            'post_date': forms.TextInput(
                 attrs={
                     'class': 'form-control'
                     }

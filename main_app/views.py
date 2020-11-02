@@ -79,8 +79,9 @@ def post_delete(request, post_id):
 def topics_index(request):
     profile = Profile.objects.all()
     topics = Topic.objects.all()
+    posts = Post.objects.all()
     post = Post.objects.all()
-    context = {'topics': topics, 'post': post, 'profile': profile}
+    context = {'topics': topics, 'posts': posts, 'post': post, 'profile': profile}
     return render(request, 'topics/index.html', context)
 
 # --- Topic Detail ---

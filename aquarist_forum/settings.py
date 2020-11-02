@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'aquarist_forum.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'aquaagora5',
+        'NAME': 'aquaagora6',
     }
 }
 
@@ -134,3 +134,9 @@ DEFAULT_FROM_EMAIL = 'Aqua Agora The Fishkeepers Forum'
 
 LOGIN_REDIRECT_URL = '/profile'
 LOGOUT_REDIRECT_URL = '/'
+
+# Base url to serve media files
+MEDIA_URL = '/media/'
+
+# Path where media is stored
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
