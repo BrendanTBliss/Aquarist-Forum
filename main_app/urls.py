@@ -2,6 +2,8 @@ from django.urls import path, include
 from django.conf.urls import url
 from . import views
 from .views import home, signup, activation_sent_view, activate
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -17,4 +19,8 @@ urlpatterns = [
     path('register/', views.signup, name='signup'),
     path('sent/', activation_sent_view, name="activation_sent"),
     path('activate/<slug:uidb64>/<slug:token>/', activate, name='activate'),
+    path('upload/', views.image_upload_view)
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

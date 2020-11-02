@@ -15,7 +15,7 @@ from django.utils.http import urlsafe_base64_encode
 from .tokens import account_activation_token
 from django.template.loader import render_to_string
 
-from .forms import SignUpForm
+from .forms import SignUpForm, ImageForm
 from .tokens import account_activation_token
 
 # Create your views here.
@@ -190,5 +190,19 @@ def profile_edit(request, user_id):
             profile_user_form = Profile_User_Form(instance=user)
             context = {'user': user, 'user_form': user_form, 'profile_form': profile_form, 'profile_user_form': profile_user_form}
             return render(request, 'profile/edit.html', context)
+
+
+def image_upload_view(request):
+    """Process images uploaded by users"""
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            # Get the current instance object to display in the template
+            img_obj = form.instance
+            return render(request, 'image_upload.html', {'form': form, 'img_obj': img_obj})
+    else:
+        form = ImageForm()
+    return render(request, 'image_upload.html', {'form': form})
 
 
