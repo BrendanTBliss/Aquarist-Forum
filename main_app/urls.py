@@ -19,7 +19,8 @@ urlpatterns = [
     path('register/', views.signup, name='signup'),
     path('sent/', activation_sent_view, name="activation_sent"),
     path('activate/<slug:uidb64>/<slug:token>/', activate, name='activate'),
-    path('upload/', views.image_upload_view)
+    path('upload/', views.image_upload_view, name='image_upload_view'),
+    path('tank_images/', views.display_images, name = 'images'),
 ]
 
 if settings.DEBUG:

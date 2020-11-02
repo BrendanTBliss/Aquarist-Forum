@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-from .models import Topic, Post, Profile
-from .forms import Post_Form, Profile_Form, User_Form, SignUpForm, Profile_User_Form
+from .models import Topic, Post, Profile, Image
+from .forms import Post_Form, Profile_Form, User_Form, SignUpForm, Profile_User_Form, ImageForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
@@ -205,4 +205,8 @@ def image_upload_view(request):
         form = ImageForm()
     return render(request, 'image_upload.html', {'form': form})
 
-
+def display_images(request): 
+    if request.method == 'GET': 
+        # getting all the objects of hotel. 
+        Images = Image.objects.all()  
+        return render(request, 'display_images.html', {'images' : Images})
