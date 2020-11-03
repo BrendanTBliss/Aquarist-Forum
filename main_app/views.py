@@ -1,7 +1,8 @@
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from .models import Topic, Post, Profile, Image
-from .forms import Post_Form, Profile_Form, User_Form, SignUpForm, Profile_User_Form, ImageForm, CommentForm
+from .forms import Post_Form, Profile_Form, SignUpForm, Profile_User_Form, ImageForm, CommentForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
@@ -63,6 +64,7 @@ def posts_detail(request, post_id):
             new_comment = comment_form.save(commit=False)
             # Assign the current post to the comment
             new_comment.post = post
+            new_comment.user = request.user
             # Save the comment to the database
             new_comment.save()
     else:
@@ -199,10 +201,9 @@ def profile_edit(request, user_id):
             # user_form.save()
             return redirect('profile')
         else:
-            user_form = User_Form(instance=user)
             profile_form = Profile_Form(instance=user.profile)
             profile_user_form = Profile_User_Form(instance=user)
-            context = {'user': user, 'user_form': user_form, 'profile_form': profile_form, 'profile_user_form': profile_user_form}
+            context = {'user': user, 'profile_form': profile_form, 'profile_user_form': profile_user_form}
             return render(request, 'profile/edit.html', context)
 
 
@@ -224,3 +225,5 @@ def display_images(request):
         # getting all the objects of hotel. 
         Images = Image.objects.all()  
         return render(request, 'display_images.html', {'images' : Images})
+
+

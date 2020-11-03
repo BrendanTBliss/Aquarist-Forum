@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'postman',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -80,7 +81,7 @@ WSGI_APPLICATION = 'aquarist_forum.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'aquaagora7',
+        'NAME': 'aquaagora8',
     }
 }
 

@@ -15,28 +15,18 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2', )
         
-class User_Form(ModelForm):
-    class Meta:
-        model = Profile
-        fields = ['user']
-        
         
 class Profile_Form(ModelForm):
     class Meta:
         model = Profile
-        fields = ['user', 'email']
-
-class User_Form(ModelForm):
-    class Meta:
-        model = User
-        fields = ['username']
+        fields = ['email',]
 
 class Post_Form(ModelForm):
 
     class Meta:
         model = Post
         fields = [
-            'title', 'content', 'user', 'topic' 
+            'title', 'content', 'topic' 
         ]
         widgets = {
             'title': forms.TextInput(
@@ -45,11 +35,6 @@ class Post_Form(ModelForm):
                     }
                 ),
             'content': forms.Textarea(
-                attrs={
-                    'class': 'form-control'
-                    }
-                ),
-            'user': forms.Select(
                 attrs={
                     'class': 'form-control'
                     }
@@ -77,6 +62,7 @@ class ImageForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('user', 'body')
+        fields = ('body',)
+
 
 
