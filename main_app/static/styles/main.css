@@ -17,3 +17,7 @@ footer {
     justify-content: center;
     text-align: flex;
   }
+
+  .basemid {
+    color: rgb(37, 183, 202) !important;
+  }
