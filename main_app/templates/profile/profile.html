@@ -39,9 +39,8 @@
                     <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">{{ post.title }}</h5>
-                        <h5 class="card-title">{{ post.content }}</h5>
                         <p class="card-text"><small class="text-muted">{{ post.created_at }}</small></p>
-                        <a href="{% url 'posts_detail' post.id %}" class="btn btn-dark btn-sm">Detail</a>
+                        <a href="{% url 'posts_detail' post.id %}" class="btn btn-danger btn-sm"></a>
                     </div>
                     </div>
                 </div>
@@ -53,7 +52,7 @@
 
     </div>
 </div>
-</div>
+
 {% else %}
 <div class="container mt-5">
     <h2>Please login to view your profile</h2>
