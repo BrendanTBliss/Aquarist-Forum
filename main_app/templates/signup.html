@@ -2,8 +2,17 @@
 {% load static %} 
 {% block content %}
 
-
-<h2>Sign up Form</h2>
+<div class="video-background-holder">
+  <div class="video-background-overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+      <source src="{% static 'images/fish_swimming_in_tank.mp4/' %}" type="video/mp4">
+  </video>
+  <div class="video-background-content container h-100"><br><br>
+      <div class="mobileshow d-inline-flex h-10 w-25 text-center align-items-center text-dark justify-content-center"></div>
+        <div class="d-inline-flex h-10 text-center align-items-center text-dark justify-content-center">
+          <div class="px-1  pb-1 bg-dark-dark">
+        <div class="container  text-white">
+          <h4>Sign Up</h4>
 <form method="post">
   {% csrf_token %}
   {% for field in form %}
@@ -11,7 +20,7 @@
       {{ field.label_tag }}<br>
       {{ field }}
       {% if field.help_text %}
-        <small style="color: grey">{{ field.help_text }}</small>
+        <small style="color: grey"></small>
       {% endif %}
       {% for error in field.errors %}
         <p style="color: red">{{ error }}</p>
@@ -20,5 +29,10 @@
   {% endfor %}
   <button type="submit">Sign up</button>
 </form>
+        </div> 
+        </div>
+      </div>
+  </div>
+</div>
 
 {% endblock %}
