@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+
+
+
+
+
+
+<div class="row py-5 px-5">
+    
+    <div class="col-xl-4 col-md-6 col-sm-10 mx-auto ">
+
+        <!-- Profile widget -->
+        <div class="bg-white shadow rounded overflow-hidden">
+            
+                <div class="py-10">
+                    {% for post in posts %}
+            <div class="card mt-6">
+                <div class="row no-gutters">
+                    <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text"><small class="text-muted">{{ post.created_at }}</small></p>
+                        <a href="{% url 'posts_detail' post.id %}" class="btn btn-dark btn-sm">Go to post</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+                </div>
+            </div>
+        </div><!-- End profile widget -->
+
+    </div>
+</div>
+{% else %}
+
+<div class="container mt-5">
+    <h2>Please login to view your profile</h2>
+</div>
+{% endif %}
+
+
+
+{% endblock %}

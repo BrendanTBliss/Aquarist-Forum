@@ -4,7 +4,12 @@
 {% if user.is_authenticated %}
 
 
-
+<div class="video-background-holder">
+    <div class="video-background-overlay"></div>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="{% static 'images/fish_swimming_in_tank.mp4/' %}" type="video/mp4">
+    </video>
+    <div class="video-background-content container h-100">
 
 
 
@@ -13,10 +18,10 @@
     <div class="col-xl-4 col-md-6 col-sm-10 mx-auto ">
 
         <!-- Profile widget -->
-        <div class="bg-white shadow rounded overflow-hidden">
-            <div class="px-4 pt-0 pb-4 bg-dark"><br>
-                <div class="media align-items-end profile-header">
-                    <div class="profile mr-3"><img src="{% static 'images/aquaagoralogo.png' %}" alt="{% static 'images/aquaagoralogo.png' %}" height="60" class="img-fluid bg-dark">
+            <div class="px-4 pt-0 pb-4 bg-dark-dark"><br>
+                <div class="media align-items-center profile-header">
+                    <div class="profile mr-3"><img src="{% static 'images/aquaagoralogo.png' %}" alt="{% static 'images/aquaagoralogo.png' %}" height="200" class="img-fluid bg-transparent"><br><br>
+                        <a href="/user_posts/" class="d-flex justify-content-center">GO TO POSTS</a>
                     </div>
                     <div class="media-body mb-0 text-white">
                         <h4 class="mt-0 mb-0">{{ user.username }}</h4>
@@ -25,7 +30,7 @@
                             {% csrf_token %}
                             {{ form.as_p }}
                                 <button type="button" class="btn btn-dark btn-sm btn-block" style="width:90%">
-                                    <input class="btn btn-sm text-white text-left" type="submit" value="Edit Profile">
+                                    <input class="btn btn-sm text-white text-left" type="submit" value="Edit">
                                 </button>
                                 <button type="button" class="btn btn-dark text-white btn-block mr-2" style="width: 90%;"><div class="card-action">
                                     <a class="text-white" onclick="return confirm('Are you sure you want to delete your account?')" href="{% url 'profile_delete' user.id %}">Delete</a>
@@ -36,25 +41,14 @@
                     </div>
                 </div>
             </div>
-                <div class="py-10">
-                    {% for post in posts %}
-            <div class="card mt-6">
-                <div class="row no-gutters">
-                    <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ post.title }}</h5>
-                        <p class="card-text"><small class="text-muted">{{ post.created_at }}</small></p>
-                        <a href="{% url 'posts_detail' post.id %}" class="btn btn-dark btn-sm">Go to post</a>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+                
                 </div>
             </div>
         </div><!-- End profile widget -->
 
     </div>
+</div>
+</div>
 </div>
 {% else %}
 

@@ -138,6 +138,14 @@ def profile_detail(request):
     return render(request, 'profile/profile.html', context)
 
 
+# --- User Posts Index ---
+def user_posts_index(request):
+    user = User.objects.get(id=request.user.id)
+    posts = Post.objects.filter(user = user)
+    context = {'posts': posts}
+    return render(request, 'profile/user_posts_index.html', context)
+
+
 # --- Profile delete ---
 @login_required
 def profile_delete(request, user_id):

@@ -27,6 +27,7 @@ urlpatterns = [
     path('activate/<slug:uidb64>/<slug:token>/', activate, name='activate'),
     path('upload/', views.image_upload_view, name='image_upload_view'),
     path('tank_images/', views.display_images, name = 'images'),
+    path('user_posts/', views.user_posts_index, name='user_posts_index'),
     
     #DELETE ALL VIEWS BELOW HERE
     
