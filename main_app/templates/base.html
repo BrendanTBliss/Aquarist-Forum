@@ -29,13 +29,19 @@
   <body class="d-flex flex-column h-100">
     <nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm sticky-top">
       <div class="container">
-        <a href="/ " class="navbar-brand">
+        <div id="content-desktop"><a href="/ " class="navbar-brand">
           <!-- Logo Image -->
           <img src="{% static 'images/aquaagoralogo.png' %}" width="40" alt="" class="d-inline-block align-middle mr-2">
           <!-- Logo Text -->
           <span class="text-uppercase font-weight-bold">Aqua Agora</span>
-          <span class='basemidhome mobileshow' id='media'>The Fishkeeper's Forum</span>
-        </a>
+          <span class='basemidhome' id='media'>The Fishkeeper's Forum</span>
+        </a></div>
+        <div id="content-mobile"><a href="/ " class="navbar-brand">
+          <!-- Logo Image -->
+          <img src="{% static 'images/aquaagoralogo.png' %}" width="40" alt="" class="d-inline-block align-middle mr-2">
+          <!-- Logo Text -->
+          <span class="text-uppercase font-weight-bold">Aqua Agora</span>
+        </a></div>
     
         <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
     
