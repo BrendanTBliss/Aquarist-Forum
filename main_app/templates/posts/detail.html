@@ -16,6 +16,7 @@
        
         </div>
         <div class="card-footer text-muted">
+          {% if user.username == post.user.username %}
           <form class="mb-2" action="{% url 'post_edit' post.id %}" method="POST">
           {% csrf_token %}
           {{ form }}
@@ -23,6 +24,9 @@
           <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete {{ post.title }}?')" href="{% url 'post_delete' post.id %}">Delete</a>
           </form>
           <a class="text-white" href="/posts"><i class="fas fa-chevron-left"></i> Back to posts</a>
+          {% else %}
+          <small class="card-subtitle text-muted"></small>
+          {% endif %}
         </div>
       </div>
     </div>
